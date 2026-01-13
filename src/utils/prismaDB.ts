@@ -17,6 +17,7 @@ if (!dbUrl.searchParams.has("sslmode")) {
 
 const adapter = new PrismaPg({
   connectionString: dbUrl.toString(),
+  ssl: { rejectUnauthorized: false },
 })
 
 export const prisma = globalForPrisma.prisma || new PrismaClient({
