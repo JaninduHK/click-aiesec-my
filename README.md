@@ -1,119 +1,203 @@
-Play Next.js is a free and **Open-source SaaS starter kit and boilerplate, designed and built for SaaS startups**, apps, businesses, and more. With its premium design and essential UI components and pages, it provides everything you need to kickstart a feature-rich SaaS website.
+# AIESEC Malaysia Link Shortener
 
-[![Play Next.js](https://github.com/NextJSTemplates/play-nextjs/blob/main/nextjs-play.png)](https://play.nextjstemplates.com)
+Official URL shortening service for AIESEC Malaysia. Create short, branded links for campaigns, events, and opportunities with comprehensive analytics tracking.
 
-## Free SaaS Boilerplate and Starter Kit for Next.js 🚀
+[![click.aiesec.my](https://www.aiesec.org/images/aiesec-logo.png)](https://click.aiesec.my)
 
-Play Next.js SaaS Boilerplate and Starter Kit is a free, open-source solution ideal for startups, SaaS companies, and more. It offers essential UI components, authentication and database integration, and Stripe integration. Its superior design and functionality make it a go-to choice for launching a feature-rich SaaS website efficiently.
+## 🚀 Overview
 
-### [🚀 View Live Demo](https://play.nextjstemplates.com/)
+**click.aiesec.my** is a custom-built link shortening platform designed specifically for AIESEC Malaysia's needs. It provides:
 
-### [🔌 Documentation](https://nextjstemplates.com/docs)
+- **Custom Short URLs**: Create branded links with memorable slugs (e.g., `click.aiesec.my/gv2024`)
+- **Real-time Analytics**: Track clicks, geographic distribution, referrers, and device types
+- **User Management**: Role-based access control with USER and ADMIN roles
+- **Link Management**: Full CRUD operations for managing shortened links
+- **Visual Analytics**: Charts and graphs showing click trends and engagement metrics
 
-### All Essential Integrations - DB, Auth, Payment, MDX, and more ⚡
+## ✨ Key Features
 
-Play Next.js SaaS Starter kit includes all the key integrations required to build a fully functional SaaS platform.
+### For All Users
+- Create custom short links with personalized slugs
+- View detailed analytics for each link (clicks over time, geographic data, referrers)
+- Copy shortened URLs with one click
+- Edit link destinations and titles
+- Activate/deactivate links without deleting them
+- Profile management with LC and designation fields
 
-- **PostgreSQL for Database**: Comes with PostgreSQL integration with Prisma which is a powerful and open-source relational database system ensures data integrity and reliability.
+### For Administrators
+- Manage all users and their links
+- View system-wide analytics and statistics
+- User role management (promote/demote users)
+- Delete users and their associated links
+- Access comprehensive dashboard with all links across the system
 
-- **NextAuth for Authentication**: Play Next.js utilizes NextAuth, a versatile solution that provides secure login and user management.
+## 🛠 Technology Stack
 
-- **MDX for Blogs**: MDX uniquely combines Markdown and JSX, Play Next.js comes with complete blogging solution to create and maintain blog using MDX.
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js
+- **UI Components**: Custom components based on TailAdmin dashboard
+- **Charts**: Custom chart components for analytics visualization
 
-- **Stripe for Subscription Payments**: Stripe, a globally trusted payment processing platform, offers robust security features and smooth checkout experiences.
+## 📦 Installation
 
-These integrations work together to simplify development and enhance the user experience.
+### Prerequisites
 
-### Essential SaaS Pages & Components and Styled Using Tailwind CSS 🎨
-
-This Next.js SaaS Boilerplate and Starter Kit is **styled using Tailwind CSS**, a highly flexible and customizable utility-first CSS framework. Leveraging the power of Tailwind, each component and page of this kit, including **login, signup, blog, about, and others, has been handcrafted to offer top-notch aesthetics** while maintaining peak usability.
-
-### Crafted Using [🎨 TailGrids Components](https://tailgrids.com)
-
-Play Next.js SaaS boilerplate, you can enjoy a professional-looking website that offers seamless operation, all while significantly reducing your web development time and effort.
-
----
-
-### 🚀 Deploy Now
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNextJSTemplates%2Fplay-nextjs)
-
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/NextJSTemplates/play-nextjs)
+- Node.js 18+
+- PostgreSQL database
+- npm or yarn package manager
 
 ### Setup Instructions
 
-Follow these steps to set up and run this template on your local machine:
-
-1. Begin by downloading and extracting the template from **Next.js Templates**.
-
-2. Once you've done that, navigate into the template directory using the **cd** command.
-
-3. Install the necessary dependencies by running the following commands:
-
+1. Clone the repository:
 ```bash
-    npm install --legacy-peer-deps
+git clone https://github.com/yourusername/click.aiesec.my.git
+cd click.aiesec.my
 ```
 
-**Note:** As of right now React 19 causes peer dependencies issues with some packages, so the `legacy-peer-deps` flag is required.
-
-4. Now you're ready to start the project on your local server. Use the following command to get it up and running:
-
+2. Install dependencies:
 ```bash
-    npm run dev
+npm install --legacy-peer-deps
 ```
 
-This will launch the template on [localhost:3000](http://localhost:3000).
+**Note:** The `--legacy-peer-deps` flag is required due to React 19 peer dependency issues with some packages.
 
-Our comprehensive documentation includes all the guides you'll need for integrating various features.
+3. Set up environment variables:
 
-### Deployment on PaaS
+Create a `.env` file in the root directory with the following variables:
 
-If your project is hosted on a GitHub repository, you can deploy it using free and user-friendly platforms like [Vercel](https://vercel.com/) or [Netlify](https://netlify.com/). Both provide generous free tiers for hosting Next.js projects.
+```env
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/aiesec_shortener"
 
-### License Information
+# NextAuth
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-here"
 
-Play is Free is completely free and open-source. Feel free to use it for both personal and commercial projects.
+# Short Domain (production)
+NEXT_PUBLIC_SHORT_DOMAIN="https://click.aiesec.my"
+```
 
-### Show Your Support
+4. Initialize the database:
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-If you appreciate this project, please consider starring this repository. Your support encourages our team to continue creating more content like this and helps us to reach more users like you!
+5. Run the development server:
+```bash
+npm run dev
+```
 
-## Explore More Templates
+The application will be available at [http://localhost:3000](http://localhost:3000)
 
-For a wider range of options, feel free to browse our collection of [Next.js Templates, Boilerplates and Starter Kits](https://nextjstemplates.com/templates).
+## 📊 Database Schema
 
-### Update Log
+The application uses the following main models:
 
-**03 December 2025** - v2.2.2
+- **User**: User accounts with authentication and profile information
+- **ShortLink**: Shortened links with slug, destination, and metadata
+- **ClickEvent**: Click tracking with IP, country, device, and referrer data
 
-- Upgraded to Next.js 16
-- Update prisma latest version
-- Updated tailwindcss latest version
+## 🚀 Deployment
 
-**06 August 2025** - v2.2.1
+### Recommended Platform: Vercel
 
-- fix: [#21](https://github.com/NextJSTemplates/play-nextjs/issues/21) - Moved context providers to `/src/app/providers.tsx`
-- Removed initial loader
+1. Push your code to a GitHub repository
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Configure environment variables in Vercel dashboard
+4. Deploy automatically on every push to main branch
 
-**10 April 2025**
+### Database: Neon or Supabase
 
-- Fix peer deps issue
-- Update Next.js for security patch
+For production PostgreSQL hosting, we recommend:
+- [Neon](https://neon.tech) - Serverless Postgres
+- [Supabase](https://supabase.com) - Open source Firebase alternative
 
-**29 Jan 2025**
+## 📱 Key Pages
 
-- Upgraded to Next.js 15
-- Using `Link` instead of `a` tag
-- Fixed all minor bugs
+- **/** - Landing page with hero section
+- **/signin** - User authentication
+- **/dashboard** - Main dashboard with analytics overview
+- **/dashboard/shortner** - Create new short links
+- **/dashboard/links** - Manage all your links
+- **/dashboard/links/[id]** - Detailed analytics for a specific link
+- **/dashboard/charts** - Visual analytics and charts
+- **/dashboard/profile** - User profile management
+- **/dashboard/users** - User management (Admin only)
 
-**21 March 2024**
+## 🔐 Authentication & Authorization
 
-- Upgraded to Next.js 14
-- Updated stripe integration
-- Fixed auth issues
-- Updated all the packages
-- Update ts config & fix all the issues
-- Update signin & signup page Design
-- Integrated Magic link signin
-- & Forgot password
-# click-aiesec-my
+- Built with NextAuth.js for secure authentication
+- Role-based access control (USER, ADMIN)
+- Session management with JWT
+- Password hashing with bcryptjs
+- Protected API routes and pages
+
+## 📈 Analytics Features
+
+Each shortened link provides:
+- Total all-time clicks
+- Clicks in the last 24 hours
+- Clicks in the last 7 days
+- Daily click trends (last 30 days)
+- Top referrer sources
+- Geographic distribution by country
+- Device type breakdown
+- Recent click events with timestamps
+
+## 🎨 Design System
+
+- Primary brand color: `#037EF3` (AIESEC Blue)
+- Clean, modern dashboard interface
+- Responsive design for mobile and desktop
+- Dark mode support
+- Consistent spacing and typography using Tailwind CSS
+
+## 📝 API Routes
+
+### Public Routes
+- `GET /api/auth/*` - NextAuth authentication endpoints
+
+### Protected Routes (Authenticated Users)
+- `GET /api/shortlinks` - Get all user's links
+- `POST /api/shortlinks` - Create a new short link
+- `GET /api/shortlinks/[id]` - Get specific link details
+- `PATCH /api/shortlinks/[id]` - Update a link
+- `DELETE /api/shortlinks/[id]` - Delete a link
+
+### Admin Routes
+- `GET /api/admin/users` - Get all users
+- `POST /api/admin/users` - Create a new user
+- `DELETE /api/admin/users/[id]` - Delete a user
+
+## 🤝 Contributing
+
+This is a private project for AIESEC Malaysia. For internal contributions:
+
+1. Create a feature branch
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+## 📄 License
+
+This project is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
+
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org)
+- Dashboard design inspired by [TailAdmin](https://tailadmin.com)
+- Icons and branding from [AIESEC Brand Guidelines](https://aies.ec/bluebook)
+
+## 📞 Support
+
+For issues or questions:
+- Contact the AIESEC Malaysia tech team
+- Email: tech@aiesec.my
+
+---
+
+**Made with ❤️ for AIESEC Malaysia**

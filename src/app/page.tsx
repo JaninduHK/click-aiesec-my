@@ -3,8 +3,8 @@ import Hero from "@/components/Hero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Play Next.js - SaaS Starter Kit and Boilerplate for Next.js",
-  description: "Free Next.js SaaS Boilerplate and Starter Kit designed and built for SaaS startups. It comes with all necessary integrations, pages, and components you need to launch a feature-rich SaaS websites.",
+  title: "AIESEC Malaysia Link Shortener | click.aiesec.my",
+  description: "Official AIESEC Malaysia link shortening service. Create short, branded links for campaigns, events, and opportunities with comprehensive analytics tracking.",
 };
 
 export default function Home() {
