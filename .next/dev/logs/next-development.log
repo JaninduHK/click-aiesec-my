@@ -1,0 +1,247 @@
+[00:00:00.429] Server  LOG      ✓ Ready in 306ms
+[00:00:03.286] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.511] Browser WARN    Image with src "/images/logo/Blue-Logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:08.990] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:24.204] Server  ERROR    ⨯ PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `syntax error at or near "$2"`
+[00:00:24.327] Browser ERROR   uncaughtError: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `syntax error at or near "$2"`
+[00:00:39.150] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:41.888] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:55.043] Server  LOG      ✓ Compiled in 27ms
+[00:02:17.111] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:20.647] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:20.798] Browser WARN    Image with src "/images/logo/Blue-Logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:02:21.313] Server  LOG      ✓ Compiled in 39ms
+[00:02:26.270] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:33.133] Server  LOG      ✓ Compiled in 41ms
+[00:03:02.201] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:50.025] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:04:03.985] Server  LOG      ✓ Compiled in 24ms
+[00:04:25.309] Server  LOG      ✓ Compiled in 19ms
+[00:05:15.299] Server  LOG      ✓ Compiled in 30ms
+[00:05:27.785] Server  LOG      ✓ Compiled in 33ms
+[00:05:41.739] Server  LOG      ✓ Compiled in 40ms
+[00:06:39.206] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:01.773] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:03.044] Server  LOG      ✓ Compiled in 33ms
+[00:08:10.289] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:11:12.331] Server  WARN    Error: Route "/dashboard/links/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:11:12.352] Server  ERROR    ⨯ PrismaClientValidationError: 
+Invalid `{imported module ./src/utils/prismaDB.ts}["prisma"].shortLink.findUnique()` invocation in
+/Users/janinduhansaka/Documents/click.aiesec.my/.next/dev/server/chunks/ssr/[root-of-the-server]__b3b32741._.js:101:165
+
+   98 if (!session?.user?.id) {
+   99     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/signin");
+  100 }
+→ 101 const link = await {imported module ./src/utils/prismaDB.ts}["prisma"].shortLink.findUnique({
+        where: {
+          id: undefined,
+      ?   slug?: String,
+      ?   AND?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   OR?: ShortLinkWhereInput[],
+      ?   NOT?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   destination?: StringFilter | String,
+      ?   title?: StringNullableFilter | String | Null,
+      ?   isActive?: BoolFilter | Boolean,
+      ?   userId?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   updatedAt?: DateTimeFilter | DateTime,
+      ?   user?: UserScalarRelationFilter | UserWhereInput,
+      ?   clickEvents?: ClickEventListRelationFilter
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              name: true
+            }
+          }
+        }
+      })
+
+Argument `where` of type ShortLinkWhereUniqueInput needs at least one of `id` or `slug` arguments. Available options are marked with ?.
+[00:11:12.476] Browser ERROR   uncaughtError: PrismaClientValidationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].shortLink.findUnique()` invocation in
+/Users/janinduhansaka/Documents/click.aiesec.my/.next/dev/server/chunks/ssr/[root-of-the-server]__b3b32741._.js:101:165
+
+   98 if (!session?.user?.id) {
+   99     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/signin");
+  100 }
+→ 101 const link = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].shortLink.findUnique({
+        where: {
+          id: undefined,
+      ?   slug?: String,
+      ?   AND?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   OR?: ShortLinkWhereInput[],
+      ?   NOT?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   destination?: StringFilter | String,
+      ?   title?: StringNullableFilter | String | Null,
+      ?   isActive?: BoolFilter | Boolean,
+      ?   userId?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   updatedAt?: DateTimeFilter | DateTime,
+      ?   user?: UserScalarRelationFilter | UserWhereInput,
+      ?   clickEvents?: ClickEventListRelationFilter
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              name: true
+            }
+          }
+        }
+      })
+
+Argument `where` of type ShortLinkWhereUniqueInput needs at least one of `id` or `slug` arguments. Available options are marked with ?.
+[00:12:17.711] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:20.843] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:36.020] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:37.362] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:37.362] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:13:37.285] Server  LOG      ✓ Compiled in 21ms
+[00:14:01.622] Server  LOG      ✓ Compiled in 22ms
+[00:14:45.350] Server  WARN    Error: Route "/dashboard/links/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:14:45.375] Server  ERROR    ⨯ PrismaClientValidationError: 
+Invalid `{imported module ./src/utils/prismaDB.ts}["prisma"].shortLink.findUnique()` invocation in
+/Users/janinduhansaka/Documents/click.aiesec.my/.next/dev/server/chunks/ssr/[root-of-the-server]__b3b32741._.js:101:165
+
+   98 if (!session?.user?.id) {
+   99     (0, {imported module ./nodemodules/next/dist/client/components/navigation.react-server.js}["redirect"])("/signin");
+  100 }
+→ 101 const link = await {imported module ./src/utils/prismaDB.ts}["prisma"].shortLink.findUnique({
+        where: {
+          id: undefined,
+      ?   slug?: String,
+      ?   AND?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   OR?: ShortLinkWhereInput[],
+      ?   NOT?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   destination?: StringFilter | String,
+      ?   title?: StringNullableFilter | String | Null,
+      ?   isActive?: BoolFilter | Boolean,
+      ?   userId?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   updatedAt?: DateTimeFilter | DateTime,
+      ?   user?: UserScalarRelationFilter | UserWhereInput,
+      ?   clickEvents?: ClickEventListRelationFilter
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              name: true
+            }
+          }
+        }
+      })
+
+Argument `where` of type ShortLinkWhereUniqueInput needs at least one of `id` or `slug` arguments. Available options are marked with ?.
+[00:14:45.494] Browser ERROR   uncaughtError: PrismaClientValidationError: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].shortLink.findUnique()` invocation in
+/Users/janinduhansaka/Documents/click.aiesec.my/.next/dev/server/chunks/ssr/[root-of-the-server]__b3b32741._.js:101:165
+
+   98 if (!session?.user?.id) {
+   99     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])("/signin");
+  100 }
+→ 101 const link = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].shortLink.findUnique({
+        where: {
+          id: undefined,
+      ?   slug?: String,
+      ?   AND?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   OR?: ShortLinkWhereInput[],
+      ?   NOT?: ShortLinkWhereInput | ShortLinkWhereInput[],
+      ?   destination?: StringFilter | String,
+      ?   title?: StringNullableFilter | String | Null,
+      ?   isActive?: BoolFilter | Boolean,
+      ?   userId?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   updatedAt?: DateTimeFilter | DateTime,
+      ?   user?: UserScalarRelationFilter | UserWhereInput,
+      ?   clickEvents?: ClickEventListRelationFilter
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              name: true
+            }
+          }
+        }
+      })
+
+Argument `where` of type ShortLinkWhereUniqueInput needs at least one of `id` or `slug` arguments. Available options are marked with ?.
+[00:15:35.397] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:47.357] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:51.005] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:52.431] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:52.432] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:16:24.000] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:28.055] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:30.902] Server  LOG      ✓ Compiled in 18ms
+[00:16:32.109] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:21:24.717] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:26.628] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:21:26.628] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:21:50.072] Browser ERROR   ./src/app/dashboard/links/[id]/page.tsx:302:5
+Parsing ecmascript source code failed
+  300 |         </div>
+  301 |       </div>
+> 302 |     </section>
+      |     ^
+  303 |   );
+  304 | }
+  305 |
+
+Expression expected
+[00:21:50.073] Browser ERROR   ./src/app/dashboard/links/[id]/page.tsx:302:6
+Parsing ecmascript source code failed
+  300 |         </div>
+  301 |       </div>
+> 302 |     </section>
+      |      ^^^^^^^^^
+  303 |   );
+  304 | }
+  305 |
+
+Unterminated regexp literal
+[00:21:50.073] Browser ERROR   ./src/app/dashboard/links/[id]/page.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/app/dashboard/links/[id]/page.tsx [app-rsc] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/app/dashboard/links/[id]/page.tsx [app-rsc] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+[00:22:26.644] Server  LOG      ✓ Compiled in 24ms
+[00:24:05.344] Server  LOG      ✓ Compiled in 31ms
+[00:24:39.099] Server  LOG      ✓ Compiled in 22ms
+[00:25:31.745] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:03.293] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:04.942] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:04.942] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:27:13.342] Browser WARN    Image with src "/images/logo/White-Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:27:40.917] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:56.617] Server  LOG      ✓ Compiled in 346ms
+[00:29:03.096] Server  LOG      ✓ Compiled in 347ms
+[00:33:10.295] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:33:10.295] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:35:23.586] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:24.793] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:37:11.144] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
