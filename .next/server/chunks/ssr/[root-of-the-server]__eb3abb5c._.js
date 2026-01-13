@@ -1,0 +1,17 @@
+module.exports=[93695,(a,b,c)=>{b.exports=a.x("next/dist/shared/lib/no-fallback-error.external.js",()=>require("next/dist/shared/lib/no-fallback-error.external.js"))},50645,a=>{a.n(a.i(27572))},17537,a=>{a.n(a.i(3363))},13718,a=>{a.n(a.i(85523))},18198,a=>{a.n(a.i(45518))},62212,a=>{a.n(a.i(66114))},15843,a=>{a.n(a.i(18357))},39759,a=>{"use strict";let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call the default export of [project]/src/components/Dashboard/ChartsView.tsx <module evaluation> from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/src/components/Dashboard/ChartsView.tsx <module evaluation>","default");a.s(["default",0,b])},24512,a=>{"use strict";let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call the default export of [project]/src/components/Dashboard/ChartsView.tsx from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/src/components/Dashboard/ChartsView.tsx","default");a.s(["default",0,b])},26060,a=>{"use strict";a.i(39759);var b=a.i(24512);a.n(b)},31056,a=>a.a(async(b,c)=>{try{var d=a.i(7997),e=a.i(20971),f=a.i(27659),g=a.i(26911),h=a.i(26060),i=b([f,g]);async function j(){let a=await (0,e.getServerSession)(g.authOptions),b=a?.user?.role==="ADMIN",c=b?{}:{userId:a?.user?.id},i=b?{}:{shortLink:{userId:a?.user?.id}},j=new Date,k=new Date(j.getTime()-2592e6),l=b?await f.prisma.$queryRaw`
+        SELECT DATE("createdAt") as date, COUNT(*)::int as count
+        FROM "ClickEvent"
+        WHERE "createdAt" >= ${k}
+        GROUP BY DATE("createdAt")
+        ORDER BY date ASC
+      `:await f.prisma.$queryRaw`
+        SELECT DATE(ce."createdAt") as date, COUNT(*)::int as count
+        FROM "ClickEvent" ce
+        INNER JOIN "ShortLink" sl ON ce."shortLinkId" = sl.id
+        WHERE ce."createdAt" >= ${k}
+          AND sl."userId" = ${a?.user?.id}
+        GROUP BY DATE(ce."createdAt")
+        ORDER BY date ASC
+      `,[m,n,o]=await Promise.all([f.prisma.clickEvent.groupBy({by:["country"],where:{...i,country:{not:null},createdAt:{gte:k}},_count:!0,orderBy:{_count:{country:"desc"}},take:10}),f.prisma.clickEvent.groupBy({by:["device"],where:{...i,device:{not:null},createdAt:{gte:k}},_count:!0,orderBy:{_count:{device:"desc"}}}),f.prisma.shortLink.findMany({where:c,take:5,orderBy:{clickEvents:{_count:"desc"}},include:{_count:{select:{clickEvents:!0}}}})]),p={clicksOverTime:l.map(a=>({date:a.date.toISOString().split("T")[0],clicks:Number(a.count)})),locationData:m.map(a=>({country:a.country||"Unknown",clicks:a._count})),deviceData:n.map(a=>({device:a.device||"Unknown",clicks:a._count})),topLinksData:o.map(a=>({slug:a.slug,title:a.title||a.slug,clicks:a._count.clickEvents}))};return(0,d.jsx)(h.default,{data:p})}[f,g]=i.then?(await i)():i,a.s(["default",()=>j,"metadata",0,{title:"Charts | click.aiesec.my",description:"Visual analytics and charts"}]),c()}catch(a){c(a)}},!1)];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__eb3abb5c._.js.map

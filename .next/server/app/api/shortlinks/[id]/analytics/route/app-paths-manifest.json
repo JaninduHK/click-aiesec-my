@@ -1,0 +1,3 @@
+{
+  "/api/shortlinks/[id]/analytics/route": "app/api/shortlinks/[id]/analytics/route.js"
+}

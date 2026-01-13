@@ -1,0 +1,3 @@
+module.exports=[96225,a=>{"use strict";var b=a.i(87924),c=a.i(6704);a.s(["default",0,({value:a,label:d="Copy",className:e})=>{let f=async()=>{try{await navigator.clipboard.writeText(a),c.default.success("Copied to clipboard")}catch(a){c.default.error(a?.message||"Unable to copy")}};return(0,b.jsx)("button",{onClick:f,className:`rounded-lg border border-stroke px-3 py-1 text-xs font-medium hover:border-primary hover:text-primary dark:border-dark-3 dark:hover:border-primary ${e||""}`,children:d})}])}];
+
+//# sourceMappingURL=src_components_Dashboard_CopyButton_tsx_10d761ed._.js.map
