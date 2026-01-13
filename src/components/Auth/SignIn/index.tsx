@@ -104,12 +104,7 @@ const Signin = () => {
                 </div>
               </form>
 
-              <Link
-                href="/forgot-password"
-                className="mb-2 inline-block text-base text-dark hover:text-primary dark:text-white dark:hover:text-primary"
-              >
-                Forget Password?
-              </Link>
+              
             </div>
           </div>
         </div>
