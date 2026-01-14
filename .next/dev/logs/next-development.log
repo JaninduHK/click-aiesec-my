@@ -12,3 +12,7 @@ Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaD
   217 }
 → 218 const user = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].user.findUnique(
 Error opening a TLS connection: self-signed certificate in certificate chain
+[00:11:11.457] Server  LOG        Reload env: .env
+[00:11:11.494] Server  LOG      ✓ Compiled in 38ms
+[00:16:18.144] Server  LOG        Reload env: .env
+[00:24:45.214] Server  LOG        Reload env: .env

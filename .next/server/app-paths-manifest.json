@@ -14,6 +14,7 @@
   "/api/forgot-password/reset/route": "app/api/forgot-password/reset/route.js",
   "/api/forgot-password/update/route": "app/api/forgot-password/update/route.js",
   "/api/forgot-password/verify-token/route": "app/api/forgot-password/verify-token/route.js",
+  "/api/health/db/route": "app/api/health/db/route.js",
   "/api/profile/route": "app/api/profile/route.js",
   "/api/register/route": "app/api/register/route.js",
   "/api/shortlinks/[id]/analytics/route": "app/api/shortlinks/[id]/analytics/route.js",

@@ -15,9 +15,15 @@ if (!dbUrl.searchParams.has("sslmode")) {
   dbUrl.searchParams.set("sslmode", "require")
 }
 
+// Configure SSL for Supabase connection pooling
 const adapter = new PrismaPg({
   connectionString: dbUrl.toString(),
-  ssl: { rejectUnauthorized: false },
+  ssl: {
+    rejectUnauthorized: false,
+    // Additional SSL options for Supabase
+    ca: undefined,
+    checkServerIdentity: () => undefined,
+  },
 })
 
 export const prisma = globalForPrisma.prisma || new PrismaClient({

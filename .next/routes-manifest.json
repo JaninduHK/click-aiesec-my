@@ -133,6 +133,12 @@
       "namedRegex": "^/api/forgot\\-password/verify\\-token(?:/)?$"
     },
     {
+      "page": "/api/health/db",
+      "regex": "^/api/health/db(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/health/db(?:/)?$"
+    },
+    {
       "page": "/api/profile",
       "regex": "^/api/profile(?:/)?$",
       "routeKeys": {},
