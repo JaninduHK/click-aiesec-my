@@ -11,20 +11,18 @@ if (!rawConnectionString) {
   throw new Error("DATABASE_URL is not set")
 }
 
-// Check if using connection pooling (port 6543)
-const isPooling = rawConnectionString.includes(':6543') || rawConnectionString.includes('pooler')
-
-// Only set SSL for direct connections, not for pooling
+// Configure connection string with SSL parameters
 const dbUrl = new URL(rawConnectionString)
-if (!isPooling && !dbUrl.searchParams.has("sslmode")) {
+if (!dbUrl.searchParams.has("sslmode")) {
   dbUrl.searchParams.set("sslmode", "require")
 }
 
-// Configure adapter based on connection type
+// Configure adapter with SSL that works for both pooling and direct connections
 const adapter = new PrismaPg({
   connectionString: dbUrl.toString(),
-  // SSL config only for direct connections
-  ...(isPooling ? {} : { ssl: { rejectUnauthorized: false } }),
+  ssl: {
+    rejectUnauthorized: false,
+  },
 })
 
 export const prisma = globalForPrisma.prisma || new PrismaClient({
