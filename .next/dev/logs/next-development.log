@@ -1,0 +1,14 @@
+[00:00:00.573] Server  LOG      ✓ Ready in 410ms
+[00:00:19.432] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:19.683] Browser WARN    Image with src "/images/logo/Blue-Logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:19.683] Browser WARN    Image with src "/images/logo/Blue-Logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:24.360] Browser LOG     
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].user.findUnique()` invocation in
+/Users/janinduhansaka/Documents/click.aiesec.my/.next/dev/server/chunks/[root-of-the-server]__844a752a._.js:218:174
+
+  215 if (!credentials?.email || !credentials?.password) {
+  216     throw new Error("Please enter an email or password");
+  217 }
+→ 218 const user = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$prismaDB$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].user.findUnique(
+Error opening a TLS connection: self-signed certificate in certificate chain
