@@ -38,6 +38,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20.11.27",
     "@types/nodemailer": "^6.4.14",
+    "@types/pg": "^8.16.0",
     "@types/prismjs": "^1.26.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.2",
