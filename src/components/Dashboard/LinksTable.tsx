@@ -4,6 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import CopyButton from "./CopyButton";
 
+const LC_OPTIONS = [
+  "LC Sunway",
+  "LC TU",
+  "LC UM",
+  "LC UPM",
+  "LC UKM",
+  "OE HWUM",
+  "LC UNMC",
+  "LC Johor Bahru",
+  "LC Kuching",
+  "LC Kedah - Perlis",
+  "LC UTAR",
+] as const;
+
 interface LinkRecord {
   id: string;
   slug: string;
@@ -17,6 +31,7 @@ interface LinkRecord {
     id: string;
     name: string | null;
     email: string | null;
+    lc: string | null;
   };
 }
 
@@ -29,13 +44,18 @@ export default function LinksTable({
 }) {
   const [links, setLinks] = useState(initialLinks);
   const [searchTerm, setSearchTerm] = useState("");
+  const [lcFilter, setLcFilter] = useState("");
 
-  const filteredLinks = links.filter(
-    (link) =>
+  const filteredLinks = links.filter((link) => {
+    const matchesSearch =
       link.slug.toLowerCase().includes(searchTerm.toLowerCase()) ||
       link.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      link.destination.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      link.destination.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesLc = !lcFilter || link.user?.lc === lcFilter;
+
+    return matchesSearch && matchesLc;
+  });
 
   const toggleActive = async (id: string, currentStatus: boolean) => {
     try {
@@ -90,7 +110,7 @@ export default function LinksTable({
         </Link>
       </div>
 
-      {/* Search */}
+      {/* Search and Filter */}
       <div className="flex items-center gap-4">
         <div className="relative flex-1">
           <input
@@ -120,6 +140,20 @@ export default function LinksTable({
             />
           </svg>
         </div>
+        {isAdmin && (
+          <select
+            value={lcFilter}
+            onChange={(e) => setLcFilter(e.target.value)}
+            className="rounded-md border border-stroke bg-transparent px-4 py-3 outline-none focus:border-primary dark:border-strokedark dark:bg-meta-4"
+          >
+            <option value="">All LCs</option>
+            {LC_OPTIONS.map((lc) => (
+              <option key={lc} value={lc}>
+                {lc}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
 
       {/* Links Table */}

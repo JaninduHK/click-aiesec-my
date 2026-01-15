@@ -17,7 +17,7 @@ export default async function LinksPage() {
   const links = await prisma.shortLink.findMany({
     where: whereLinks,
     include: {
-      user: { select: { id: true, name: true, email: true } },
+      user: { select: { id: true, name: true, email: true, lc: true } },
       _count: { select: { clickEvents: true } },
     },
     orderBy: { createdAt: "desc" },

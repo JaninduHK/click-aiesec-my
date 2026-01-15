@@ -2,6 +2,20 @@
 
 import { useState } from "react";
 
+const LC_OPTIONS = [
+  "LC Sunway",
+  "LC TU",
+  "LC UM",
+  "LC UPM",
+  "LC UKM",
+  "OE HWUM",
+  "LC UNMC",
+  "LC Johor Bahru",
+  "LC Kuching",
+  "LC Kedah - Perlis",
+  "LC UTAR",
+] as const;
+
 interface User {
   id: string;
   name: string | null;
@@ -319,16 +333,23 @@ export default function UsersManager({ initialUsers }: { initialUsers: User[] })
 
               <div>
                 <label className="mb-2.5 block text-black dark:text-white">
-                  LC (Local Committee)
+                  LC (Local Committee) <span className="text-meta-1">*</span>
                 </label>
-                <input
-                  type="text"
+                <select
+                  required
                   value={formData.lc}
                   onChange={(e) =>
                     setFormData({ ...formData, lc: e.target.value })
                   }
                   className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                />
+                >
+                  <option value="">Select LC</option>
+                  {LC_OPTIONS.map((lc) => (
+                    <option key={lc} value={lc}>
+                      {lc}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>
