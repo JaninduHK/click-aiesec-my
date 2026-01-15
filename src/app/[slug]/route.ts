@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { prisma } from "@/utils/prismaDB";
 import { normalizeSlug } from "@/utils/shortLink";
+import { UAParser } from "ua-parser-js";
 
 export async function GET(
   request: Request,
@@ -30,6 +31,34 @@ export async function GET(
     headerList.get("x-vercel-ip-country") ||
     headerList.get("cf-ipcountry") ||
     undefined;
+  const city = headerList.get("x-vercel-ip-city") || undefined;
+  const region = headerList.get("x-vercel-ip-country-region") || undefined;
+
+  // Parse user agent to extract device, browser, and OS
+  let device: string | undefined;
+  let browser: string | undefined;
+  let os: string | undefined;
+
+  if (userAgent) {
+    const parser = new UAParser(userAgent);
+    const result = parser.getResult();
+
+    // Determine device type
+    const deviceType = result.device.type;
+    if (deviceType === "mobile") {
+      device = "Mobile";
+    } else if (deviceType === "tablet") {
+      device = "Tablet";
+    } else {
+      device = "Desktop";
+    }
+
+    // Get browser name
+    browser = result.browser.name || undefined;
+
+    // Get OS name
+    os = result.os.name || undefined;
+  }
 
   try {
     await prisma.clickEvent.create({
@@ -39,6 +68,11 @@ export async function GET(
         userAgent: userAgent || undefined,
         referer: referer || undefined,
         country,
+        city,
+        region,
+        device,
+        browser,
+        os,
       },
     });
   } catch (error) {

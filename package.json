@@ -31,7 +31,8 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "stripe": "^14.7.0",
-    "tailgrids": "^2.2.7"
+    "tailgrids": "^2.2.7",
+    "ua-parser-js": "^2.0.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
@@ -42,6 +43,7 @@
     "@types/prismjs": "^1.26.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.2",
+    "@types/ua-parser-js": "^0.7.39",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "15.1.6",

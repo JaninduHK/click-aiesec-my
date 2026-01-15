@@ -4,7 +4,9 @@ interface AnalyticsData {
   overview: {
     linkCount: number;
     totalClicks: number;
+    uniqueClicks: number;
     clicksLast24h: number;
+    uniqueClicksLast24h: number;
     clicksLast7days: number;
     avgClicksPerLink: number;
   };
@@ -58,7 +60,8 @@ export default function AnalyticsDashboard({ data }: { data: AnalyticsData }) {
       </div>
 
       {/* Overview Cards */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
+        {/* Total Clicks Card */}
         <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
             <svg
@@ -74,16 +77,25 @@ export default function AnalyticsDashboard({ data }: { data: AnalyticsData }) {
             </svg>
           </div>
 
-          <div className="mt-4 flex items-end justify-between">
-            <div>
-              <h4 className="text-title-md font-bold text-black dark:text-white">
-                {data.overview.totalClicks.toLocaleString()}
-              </h4>
-              <span className="text-sm font-medium">Total Clicks</span>
+          <div className="mt-4">
+            <div className="flex items-end justify-between">
+              <div>
+                <h4 className="text-title-md font-bold text-black dark:text-white">
+                  {data.overview.totalClicks.toLocaleString()}
+                </h4>
+                <span className="text-sm font-medium">Total Clicks</span>
+              </div>
+              <div className="text-right">
+                <h4 className="text-title-md font-bold text-success">
+                  {data.overview.uniqueClicks.toLocaleString()}
+                </h4>
+                <span className="text-sm font-medium">Unique</span>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Last 24 Hours Card */}
         <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
             <svg
@@ -99,16 +111,25 @@ export default function AnalyticsDashboard({ data }: { data: AnalyticsData }) {
             </svg>
           </div>
 
-          <div className="mt-4 flex items-end justify-between">
-            <div>
-              <h4 className="text-title-md font-bold text-black dark:text-white">
-                {data.overview.clicksLast24h}
-              </h4>
-              <span className="text-sm font-medium">Last 24 Hours</span>
+          <div className="mt-4">
+            <div className="flex items-end justify-between">
+              <div>
+                <h4 className="text-title-md font-bold text-black dark:text-white">
+                  {data.overview.clicksLast24h.toLocaleString()}
+                </h4>
+                <span className="text-sm font-medium">Last 24h Clicks</span>
+              </div>
+              <div className="text-right">
+                <h4 className="text-title-md font-bold text-success">
+                  {data.overview.uniqueClicksLast24h.toLocaleString()}
+                </h4>
+                <span className="text-sm font-medium">Unique</span>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Total Links Card */}
         <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
             <svg
@@ -124,36 +145,20 @@ export default function AnalyticsDashboard({ data }: { data: AnalyticsData }) {
             </svg>
           </div>
 
-          <div className="mt-4 flex items-end justify-between">
-            <div>
-              <h4 className="text-title-md font-bold text-black dark:text-white">
-                {data.overview.linkCount}
-              </h4>
-              <span className="text-sm font-medium">Total Links</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <svg
-              className="fill-primary dark:fill-white"
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M21.1063 18.0469L19.3875 3.23126C19.2157 1.71876 17.9438 0.584381 16.3969 0.584381H5.56878C4.05628 0.584381 2.78441 1.71876 2.57816 3.23126L0.859406 18.0469C0.756281 18.9063 1.03128 19.7313 1.61566 20.3844C2.20003 21.0375 2.99066 21.3813 3.85003 21.3813H18.1157C18.975 21.3813 19.8 21.0031 20.35 20.3844C20.9 19.7656 21.2094 18.9063 21.1063 18.0469Z" />
-            </svg>
-          </div>
-
-          <div className="mt-4 flex items-end justify-between">
-            <div>
-              <h4 className="text-title-md font-bold text-black dark:text-white">
-                {data.overview.avgClicksPerLink}
-              </h4>
-              <span className="text-sm font-medium">Avg Clicks/Link</span>
+          <div className="mt-4">
+            <div className="flex items-end justify-between">
+              <div>
+                <h4 className="text-title-md font-bold text-black dark:text-white">
+                  {data.overview.linkCount}
+                </h4>
+                <span className="text-sm font-medium">Total Links</span>
+              </div>
+              <div className="text-right">
+                <h4 className="text-title-md font-bold text-black dark:text-white">
+                  {data.overview.avgClicksPerLink}
+                </h4>
+                <span className="text-sm font-medium">Avg/Link</span>
+              </div>
             </div>
           </div>
         </div>

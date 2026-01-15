@@ -18,12 +18,13 @@ export default async function DashboardPage() {
   const now = new Date();
   const last24h = new Date(now.getTime() - 24 * 60 * 60 * 1000);
   const last7days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const last30days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
   const [
     linkCount,
     totalClicks,
+    uniqueClicks,
     clicksLast24h,
+    uniqueClicksLast24h,
     clicksLast7days,
     topLinks,
     clicksByCountry,
@@ -34,9 +35,19 @@ export default async function DashboardPage() {
   ] = await Promise.all([
     prisma.shortLink.count({ where: whereLinks }),
     prisma.clickEvent.count({ where: clickWhere }),
+    // Count unique clicks by distinct IP addresses
+    prisma.clickEvent.groupBy({
+      by: ["ip"],
+      where: { ...clickWhere, ip: { not: null } },
+    }).then((result) => result.length),
     prisma.clickEvent.count({
       where: { ...clickWhere, createdAt: { gte: last24h } },
     }),
+    // Count unique clicks in last 24h by distinct IP addresses
+    prisma.clickEvent.groupBy({
+      by: ["ip"],
+      where: { ...clickWhere, ip: { not: null }, createdAt: { gte: last24h } },
+    }).then((result) => result.length),
     prisma.clickEvent.count({
       where: { ...clickWhere, createdAt: { gte: last7days } },
     }),
@@ -91,7 +102,9 @@ export default async function DashboardPage() {
     overview: {
       linkCount,
       totalClicks,
+      uniqueClicks,
       clicksLast24h,
+      uniqueClicksLast24h,
       clicksLast7days,
       avgClicksPerLink: linkCount > 0 ? Math.round(totalClicks / linkCount) : 0,
     },
