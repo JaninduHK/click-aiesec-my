@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/auth";
+import { prisma } from "@/utils/prismaDB";
 import ProfileForm from "@/components/Dashboard/ProfileForm";
 
 export const metadata: Metadata = {
@@ -11,6 +12,20 @@ export const metadata: Metadata = {
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
 
+  // Fetch fresh user data from database (not just session)
+  const user = session?.user?.id
+    ? await prisma.user.findUnique({
+        where: { id: session.user.id },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          lc: true,
+          designation: true,
+        },
+      })
+    : null;
+
   return (
     <div className="space-y-6">
       <div>
@@ -20,7 +35,7 @@ export default async function ProfilePage() {
         </p>
       </div>
 
-      <ProfileForm user={session?.user} />
+      <ProfileForm user={user ?? undefined} />
     </div>
   );
 }

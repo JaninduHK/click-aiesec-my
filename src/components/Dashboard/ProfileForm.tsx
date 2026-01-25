@@ -37,6 +37,17 @@ export default function ProfileForm({ user }: { user?: User }) {
         throw new Error("Failed to update profile");
       }
 
+      const data = await response.json();
+
+      // Update local state with the response data to sync the "Current Information" widget
+      if (data.user) {
+        setFormData({
+          name: data.user.name || "",
+          lc: data.user.lc || "",
+          designation: data.user.designation || "",
+        });
+      }
+
       setMessage({ type: "success", text: "Profile updated successfully!" });
       router.refresh();
     } catch (error) {
