@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const LC_OPTIONS = [
+  "National",
   "LC Sunway",
   "LC TU",
   "LC UM",

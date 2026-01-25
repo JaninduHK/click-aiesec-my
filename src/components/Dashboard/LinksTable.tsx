@@ -5,6 +5,7 @@ import Link from "next/link";
 import CopyButton from "./CopyButton";
 
 const LC_OPTIONS = [
+  "National",
   "LC Sunway",
   "LC TU",
   "LC UM",
