@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CopyButton from "./CopyButton";
+import QRCodeModal from "./QRCodeModal";
 
 export default function ShortnerForm() {
   const router = useRouter();
@@ -14,6 +15,8 @@ export default function ShortnerForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [createdLink, setCreatedLink] = useState<string | null>(null);
+  const [createdSlug, setCreatedSlug] = useState<string | null>(null);
+  const [showQR, setShowQR] = useState(false);
 
   const generateSlug = () => {
     const randomSlug = Math.random().toString(36).substring(2, 8);
@@ -45,6 +48,7 @@ export default function ShortnerForm() {
       }
 
       setCreatedLink(`https://click.aiesec.my/${data.slug}`);
+      setCreatedSlug(data.slug);
       setFormData({ destination: "", slug: "", title: "" });
     } catch (err: any) {
       setError(err.message);
@@ -71,37 +75,62 @@ export default function ShortnerForm() {
                 </div>
               )}
 
-              {createdLink && (
-                <div className="mb-6 rounded-md border border-success bg-success bg-opacity-10 p-4">
-                  <p className="mb-2 text-sm font-medium text-success">
-                    Link created successfully!
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      value={createdLink}
-                      readOnly
-                      className="flex-1 rounded-md border border-stroke bg-white px-4 py-2 text-black dark:border-strokedark dark:bg-boxdark dark:text-white"
+              {createdLink && createdSlug && (
+                <>
+                  {showQR && (
+                    <QRCodeModal
+                      url={createdLink}
+                      slug={createdSlug}
+                      onClose={() => setShowQR(false)}
                     />
-                    <CopyButton value={createdLink} />
+                  )}
+                  <div className="mb-6 rounded-md border border-success bg-success bg-opacity-10 p-4">
+                    <p className="mb-2 text-sm font-medium text-success">
+                      Link created successfully!
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={createdLink}
+                        readOnly
+                        className="flex-1 rounded-md border border-stroke bg-white px-4 py-2 text-black dark:border-strokedark dark:bg-boxdark dark:text-white"
+                      />
+                      <CopyButton value={createdLink} />
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowQR(true)}
+                        className="inline-flex items-center gap-1.5 rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary hover:bg-primary hover:text-white"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                          <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                          <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                          <rect x="14" y="14" width="3" height="3" fill="currentColor"/>
+                          <rect x="18" y="14" width="3" height="3" fill="currentColor"/>
+                          <rect x="14" y="18" width="3" height="3" fill="currentColor"/>
+                          <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+                        </svg>
+                        QR Code
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => router.push("/dashboard/links")}
+                        className="rounded-md border border-stroke px-4 py-2 text-sm font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
+                      >
+                        View All Links
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => { setCreatedLink(null); setCreatedSlug(null); }}
+                        className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-opacity-90"
+                      >
+                        Create Another
+                      </button>
+                    </div>
                   </div>
-                  <div className="mt-4 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => router.push("/dashboard/links")}
-                      className="rounded-md border border-stroke px-4 py-2 text-sm font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
-                    >
-                      View All Links
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setCreatedLink(null)}
-                      className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-opacity-90"
-                    >
-                      Create Another
-                    </button>
-                  </div>
-                </div>
+                </>
               )}
 
               <div className="mb-4.5">

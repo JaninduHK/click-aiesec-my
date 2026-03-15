@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/janinduhansaka/Documents/click.aiesec.my/src/components/Common/ScrollUp.tsx"],"sourcesContent":["\"use client\";\n\nimport { useEffect } from \"react\";\n\nexport default function ScrollUp() {\n  useEffect(() => window.document.scrollingElement?.scrollTo(0, 0), []);\n\n  return null;\n}\n"],"names":[],"mappings":";;;;AAEA;AAFA;;AAIe,SAAS;IACtB,IAAA,kNAAS,EAAC,IAAM,OAAO,QAAQ,CAAC,gBAAgB,EAAE,SAAS,GAAG,IAAI,EAAE;IAEpE,OAAO;AACT"}}]
+}

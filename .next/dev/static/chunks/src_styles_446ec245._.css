@@ -811,6 +811,10 @@
     z-index: 40;
   }
 
+  .z-50 {
+    z-index: 50;
+  }
+
   .z-999 {
     z-index: 999;
   }
@@ -1770,6 +1774,10 @@
     padding: calc(var(--spacing) * 7.5);
   }
 
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
+  }
+
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
@@ -1977,6 +1985,10 @@
 
   .break-words {
     overflow-wrap: break-word;
+  }
+
+  .break-all {
+    word-break: break-all;
   }
 
   .text-black {
@@ -2594,8 +2606,8 @@
   }
 
   @media (min-width: 1140px) {
-    .xl\:grid-cols-4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .xl\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 

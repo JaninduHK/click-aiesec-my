@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import CopyButton from "./CopyButton";
+import QRCodeModal from "./QRCodeModal";
 
 const LC_OPTIONS = [
   "National",
@@ -46,6 +47,7 @@ export default function LinksTable({
   const [links, setLinks] = useState(initialLinks);
   const [searchTerm, setSearchTerm] = useState("");
   const [lcFilter, setLcFilter] = useState("");
+  const [qrLink, setQrLink] = useState<{ url: string; slug: string } | null>(null);
 
   const filteredLinks = links.filter((link) => {
     const matchesSearch =
@@ -96,6 +98,13 @@ export default function LinksTable({
 
   return (
     <div className="space-y-6">
+      {qrLink && (
+        <QRCodeModal
+          url={qrLink.url}
+          slug={qrLink.slug}
+          onClose={() => setQrLink(null)}
+        />
+      )}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-black dark:text-white">Links</h1>
@@ -254,6 +263,26 @@ export default function LinksTable({
                     </td>
                     <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                       <div className="flex items-center gap-2">
+                        <button
+                          onClick={() =>
+                            setQrLink({
+                              url: `https://click.aiesec.my/${link.slug}`,
+                              slug: link.slug,
+                            })
+                          }
+                          className="hover:text-primary"
+                          title="Download QR Code"
+                        >
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/>
+                            <rect x="14" y="14" width="3" height="3" fill="currentColor"/>
+                            <rect x="18" y="14" width="3" height="3" fill="currentColor"/>
+                            <rect x="14" y="18" width="3" height="3" fill="currentColor"/>
+                            <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+                          </svg>
+                        </button>
                         <Link
                           href={`/dashboard/links/${link.id}`}
                           className="hover:text-primary"
